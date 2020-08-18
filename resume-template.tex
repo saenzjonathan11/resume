@@ -1,0 +1,199 @@
+% curly braces, {}, are used for grouping in TeX, and don't get printed
+\documentclass{article}
+
+%--------------------------------------------------------------------
+% PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+% Jonathan Saenz - Resume Letter Template
+% LaTeX Template
+%--------------------------------------------------------------------
+
+% define page size and margin total size={7in, 10.75in}
+\usepackage[a4paper, left=0.6in,top=0.4in,right=0.6in,bottom=0.4in]{geometry}
+
+% turn off page numbering
+\pagenumbering{gobble}
+
+% https://mirrors.concertpass.com/tex-archive/macros/latex/required/tools/tabularx.pdf
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+
+% Doc: http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/enumitem/enumitem.pd
+% for listing items with bullets points
+\usepackage{enumitem}
+
+% spacing for itemize lists
+\setlist{topsep=2pt,partopsep=0pt,parsep=0pt,itemsep=2pt}
+
+% used for logos/icons 
+\usepackage{fontawesome} 
+
+% used for hyperlinking
+% \href[options]{URL}{text}
+\usepackage{hyperref}
+
+% used for conditional statements
+% Doc: http://texdoc.net/texmf-dist/doc/latex/base/ifthen.pdf
+%\ifthenelse{condition}{A}{B}. If condition are true then it executes A else B
+\usepackage{ifthen}
+
+% allow characters beyond ASCII (e.g. à, ü, č ...)
+\usepackage[utf8]{inputenc}
+
+% allows to customize section titles
+% Doc: http://ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/titlesec/titlesec.pdf
+% \titleformat{<command>}[<shape>]{<format>}{<label>}{<sep>}{<before-code>}[<after-code>]
+% \titlerule[<height>]
+\usepackage{titlesec}
+
+% allows to customize text
+% Doc http://www.ctex.org/documents/packages/special/soul.pdf
+% \setul{<underline depth>}{<underline thickness>}
+\usepackage{soul}
+
+% center text new command \tightcenter
+% https://www.dickimaw-books.com/latex/novices/html/newenv.html
+\newenvironment{tightcenter}{
+  \centering\noindent\ignorespaces
+}{\par\ignorespacesafterend}
+
+%--------------------------------------------------------------------
+% Custom Sections
+%--------------------------------------------------------------------
+
+% Resume Section Title
+\newenvironment{rSection}[2]{
+    {\large\noindent\ignorespaces \textbf{#1}}
+    % https://tex.stackexchange.com/questions/195491/ifthenelse-equal-string-comparison-fails
+    \ifthenelse{\equal{\detokenize{#1}}{\detokenize{PROJECTS}}}
+    {\href{https://#2}{\large\faGithub \textbf{ GitHub:\hspace{2pt}#2}}} % TRUE
+    {{}} % FALSE
+     \ifthenelse{\equal{\detokenize{#1}}{\detokenize{INTERESTS}}}
+    {\href{https://#2}{\large\textbf{#2}}} % TRUE
+    {{}} % FALSE
+    \vspace{4pt}
+    \hrule height 1pt 
+    \vspace{4pt}
+    \large\noindent\ignorespaces
+}{\noindent\ignorespacesafterend}
+
+%	Work Experience Section
+\newenvironment{wSubsection}[4]{ % 4 input arguments - company name | job title | location  and employment period
+    \large
+    {\noindent\ignorespaces\textbf{#1}}
+    $\mid$
+    {\noindent\ignorespaces #2}
+    \ifthenelse{\equal{#3}{}}{{}}{$\mid$ {\noindent\ignorespaces #3}}
+    \hfill
+    {\noindent\ignorespaces\textbf{#4}}
+}{\noindent\ignorespacesafterend}
+
+%	Project Experience Section
+\newenvironment{rSubsection}[1]{
+    {\large\noindent\ignorespaces \textbf{#1}}
+}{\noindent\ignorespacesafterend}
+
+% Start Document
+\begin{document}
+
+\begin{tightcenter}
+  {{\Huge\bfseries\ul{Full Name}}} \vspace{.8em} \\
+  {\large \href{mailto:username@gmail.com}
+  {\faEnvelope \hspace{1px} username@gmail.com}
+  {\faPhone \hspace{1pt} XXX-XXX-XXXX}
+  \href{https://www.linkedin.com/in/username}
+  {\faLinkedinSquare \hspace{1pt} linkedin.com/in/username}}
+\end{tightcenter}
+\vspace{.8em}
+
+\begin{rSection}{EDUCATION}{}
+{\textbf{University}} City, State \hfill Graduating: {\textbf{Month Year}}\\
+B.S in [Major]; Minor in [Minors] \hfill GPA: {\textbf{ X.XX/X.X}}
+\end{rSection}
+
+\vspace{.6em}
+
+\begin{rSection}{WORK EXPERIENCE}{}
+
+\begin{wSubsection}{Company Name 1}{Position}{City, State}{Start Date - End Date}
+\begin{itemize}
+    \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis vulputate dolor. Nullam faucibus hendrerit magna nec blandit. Vivamus feugiat lacinia elit a maximus. Suspendisse nec ex quis erat vehicula dictum.
+    \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis vulputate dolor. Nullam faucibus hendrerit magna nec blandit.
+    \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut posuere purus risus.
+\end{itemize}
+\end{wSubsection}
+
+\begin{wSubsection}{Company Name}{Position}{City, State}{Start Date - End Date}
+\begin{itemize}
+    \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis vulputate dolor. Nullam faucibus hendrerit magna nec blandit.
+    \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut posuere purus risus. 
+\end{itemize}
+
+\end{wSubsection}
+
+\begin{wSubsection}{Company Name}{Position}{City, State}{Start Date - End Date}
+\begin{itemize}
+    \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis vulputate dolor. Nullam faucibus hendrerit magna nec blandit. 
+    \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut posuere purus risus. \href{https://cmserversdirect.com/}{\large\faLink}
+\end{itemize}
+\end{wSubsection}
+\end{rSection}
+
+\vspace{.6em}
+
+\begin{rSection}{PROJECTS}{github.com/username}
+\noindent\textbf{\large Project 1 Name}{\href{https://github.com/username/repo}{ {\faGithub}}} \hfill \textbf{Date 1}
+\begin{itemize}
+  \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis vulputate dolor. Nullam faucibus hendrerit magna nec blandit.
+\end{itemize}
+
+\noindent\textbf{\large Project 2 Name}{\href{https://bit.ly}{ $\mid$ {\large\textbf{Featured in: bit.ly}}}} \hfill \textbf{Date 2}
+\begin{itemize}
+    \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis vulputate dolor. Nullam faucibus hendrerit magna nec blandit.
+\end{itemize}
+ 
+\noindent\textbf{\large Project 3 Name}{\href{https://github.com/username/repo}{ {\faGithub}}} \hfill \textbf{Date 3}
+\begin{itemize}
+    \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis vulputate dolor. Nullam faucibus hendrerit magna nec blandit.
+\end{itemize}
+ 
+\end{rSection}
+
+\vspace{.6em}
+
+\begin{rSection}{LEADERSHIP/SERVICE/AWARDS}{}
+\textbf{Title One}\hfill\textbf{Date 1}
+\begin{itemize}
+    \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis vulputate dolor. Nullam faucibus hendrerit magna nec blandit. \href{https://github.com}{\faLink}
+    \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut posuere purus risus.
+\end{itemize}
+\textbf{Title Two}\hfill\textbf{Date 2}
+\begin{itemize}
+    \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis vulputate dolor. Nullam faucibus hendrerit magna nec blandit.
+    \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut posuere purus risus.
+\end{itemize}
+\end{rSection}
+
+\vspace{.6em}
+
+\begin{rSection}{TECHNICAL SKILLS}{}
+
+\begin{tabularx}{0pt\noindent}{@{}l l}
+  Programming Languages & \textbf{Lang1, Lang2, Lang3, Lang4} \\
+  Frameworks & \textbf{Fram1 \& Fram1} \\ 
+  Tools/Software/Services & \textbf{Num1, Num2, Num3} \\
+\end{tabularx}
+
+\end{rSection}
+
+\vspace{.6em}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+% \begin{rSection}{INTERESTS}{personalsite.com} % uncomment to add text
+\begin{rSection}{INTERESTS}{}
+\begin{tabularx}{\textwidth}{Y|Y|Y|Y}
+  Interest1 & Interest3 & Interest5 & Interest7 \\
+  Interest2 & Interest4 & Interest6 & Interest8  \\
+\end{tabularx}
+\end{rSection}
+
+\end{document}
