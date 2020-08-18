@@ -4,7 +4,7 @@
 ## Preview
 | Resume | Cover Letter |
 |:---:|:---:|
-|[Download PDF](./resume-template/resume-template.pdf) |[Download PDF](./cover-letter-template/cover-letter-template.pdf) |
+|[Download PDF](https://github.com/saenzjonathan11/resume/raw/master/resume-template/resume-template.pdf) |[Download PDF](https://github.com/saenzjonathan11/resume/raw/master/cover-letter-template/cover-letter-template.pdf) |
 |![resume](./resume-template/resume-template.png) | ![cover letter](./cover-letter-template/cover-letter-template.png) |
 
 ## Motivation
