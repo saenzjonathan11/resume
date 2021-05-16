@@ -16,7 +16,7 @@ Both templates use the article document class and are commented on to provide cl
 ## Additional Information
 The page size of each template is 8 x 11 inches. This is the standard printing paper size. The size and page margins are specified on the top of each .tex file by using the "letterpaper" option and geometry package. 
 
-To create your own signature for the cover letter, visit [signature.imageonline.co](https://signature.imageonline.co). You can use an editor like GIMP or Microsoft Paint to crop out the excessive white background after the the .png file has been downloaded.
+To create your own signature for the cover letter, visit [signature.imageonline.co](https://signature.imageonline.co). You can use an editor like GIMP or Microsoft Paint to crop out the excessive white background after the .png file has been downloaded.
 
 ## License 
 I intended these files to be modified and redistributed which is why this repository is under the MIT License.  
